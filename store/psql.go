@@ -102,3 +102,22 @@ func GetUserByID(id int) {
 		fmt.Println("User is name is ", user.Name)
 	}
 }
+
+//Delete User by Id
+func DeleteUser(id int) {
+	var user User
+	err := db.QueryRow("SELECT * FROM users WHERE id=$1", id).Scan(&user.ID, &user.Name, &user.Age, &user.Job)
+
+	switch {
+	case err == sql.ErrNoRows:
+		log.Fatal("No user with that id")
+	case err != nil:
+		log.Fatal(err)
+	default:
+		_, err := db.Exec("DELETE FROM users WHERE id=$1", id)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("User Deleted")
+	}
+}

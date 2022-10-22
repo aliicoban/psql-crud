@@ -7,8 +7,8 @@ func main() {
 	//insert user
 
 	u := store.User{
-		Name: "Cagdas Karabay",
-		Age:  "29",
+		Name: "Ali Coban",
+		Age:  "27",
 		Job:  "Software Developer",
 	}
 
@@ -29,4 +29,7 @@ func main() {
 	}
 	store.UpdateUser(u)
 	*/
+
+	// Delete user
+	//store.DeleteUser(6)
 }
